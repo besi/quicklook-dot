@@ -2,6 +2,7 @@
 #include <CoreServices/CoreServices.h>
 #include <QuickLook/QuickLook.h>
 #include <Foundation/Foundation.h>
+#include <AppKit/AppKit.h>
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file
@@ -11,40 +12,30 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-	NSAutoreleasePool *pool; NSMutableDictionary *props,*imgProps; 
-	
-	NSMutableString *html; 
-	NSData *image;
-	pool = [[NSAutoreleasePool alloc] init];
-	// Initializes the Core Data stack to read from the file and returns a managed object
-	
-	
-	props=[[[NSMutableDictionary alloc] init] autorelease];
-	[props setObject:@"UTF-8" forKey:(NSString *)kQLPreviewPropertyTextEncodingNameKey];
-	[props setObject:@"text/html" forKey:(NSString *)kQLPreviewPropertyMIMETypeKey];
-	html=[[[NSMutableString alloc] init] autorelease]; 
-	[html appendString:@"<html><body bgcolor=white>"]; 
-	[html appendString:@"<img src=\"cid:setup.png\"><br>"];	
-	[html appendString:@"</h1><br><br><h2>Description:</h2><br>"];
-	[html appendString:@"<br><h2>Start Date:</h2><br>"]; 
-	[html appendString:@"<br><h2>End Date:</h2><br>"];
-	[html appendString:@"</body></html>"];
-	
-	image=[NSData dataWithContentsOfFile: @"/Users/besi/Dropbox/projects/gurgelisms-air/doc/setup.png"];
-	
+		
+	CGSize canvasSize = CGSizeMake(400,400);
 
-	
-	imgProps=[[[NSMutableDictionary alloc] init] autorelease];
-	[imgProps setObject:@"image/png" forKey:(NSString *)kQLPreviewPropertyMIMETypeKey];
-	[imgProps setObject:image forKey:(NSString *)kQLPreviewPropertyAttachmentDataKey];
-	[props setObject:[NSDictionary dictionaryWithObject:imgProps forKey:@"tabs.png"] forKey:(NSString *)kQLPreviewPropertyAttachmentsKey];
-	QLPreviewRequestSetDataRepresentation(preview,(CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],kUTTypeHTML,(CFDictionaryRef)props); 
+	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 	
 	
-	[pool release]; return noErr;
+	// Preview will be drawn in a vectorized context
+	CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, true, NULL);
+	if(cgContext) { 
+			
+			NSData *imageData = [NSData dataWithContentsOfFile:@"/Users/besi/Dropbox/projects/gurgelisms-air/doc/setup.png"]; 
+
+			CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData ((CFDataRef)imageData);
+			CGImageRef image = CGImageCreateWithPNGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
+			
+			
+			CGContextDrawImage(cgContext,CGRectMake(0, 0, 400, 400), image);
+			
+		 QLPreviewRequestFlushContext(preview, cgContext); CFRelease(cgContext);
+	} [pool release]; return noErr;
+	
 }
-
-
+	
+	
 void CancelPreviewGeneration(void* thisInterface, QLPreviewRequestRef preview)
 {
     // implement only if supported

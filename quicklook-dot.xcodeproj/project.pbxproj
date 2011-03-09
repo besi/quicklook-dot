@@ -15,6 +15,7 @@
 		C86B05270671AA6E00DD9006 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86B05260671AA6E00DD9006 /* CoreServices.framework */; };
 		CD3F0DD51327E3110088B552 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3F0DD41327E3110088B552 /* Foundation.framework */; };
 		CD3F0DEC1327E36F0088B552 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3F0DEB1327E36F0088B552 /* CoreData.framework */; };
+		CD55E28B1328203E0051B5D2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD55E28A1328203E0051B5D2 /* AppKit.framework */; };
 		F28CFBFD0A3EC0AF000ABFF5 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28CFBFC0A3EC0AF000ABFF5 /* ApplicationServices.framework */; };
 		F28CFC030A3EC0C6000ABFF5 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28CFC020A3EC0C6000ABFF5 /* QuickLook.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		C86B05260671AA6E00DD9006 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		CD3F0DD41327E3110088B552 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD3F0DEB1327E36F0088B552 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CD55E28A1328203E0051B5D2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F28CFBFC0A3EC0AF000ABFF5 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		F28CFC020A3EC0C6000ABFF5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -45,6 +47,7 @@
 				F28CFC030A3EC0C6000ABFF5 /* QuickLook.framework in Frameworks */,
 				CD3F0DD51327E3110088B552 /* Foundation.framework in Frameworks */,
 				CD3F0DEC1327E36F0088B552 /* CoreData.framework in Frameworks */,
+				CD55E28B1328203E0051B5D2 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +74,7 @@
 				0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */,
 				CD3F0DD41327E3110088B552 /* Foundation.framework */,
 				CD3F0DEB1327E36F0088B552 /* CoreData.framework */,
+				CD55E28A1328203E0051B5D2 /* AppKit.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
