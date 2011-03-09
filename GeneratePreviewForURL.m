@@ -14,8 +14,11 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-		
-	CGSize canvasSize = CGSizeMake(400,400);
+	
+	NSData *imageData = [Dot dataFromDotFile: (NSURL *)url];
+	NSImage *imageForSize = [[NSImage alloc] initWithData: imageData];
+	
+	CGSize canvasSize = CGSizeMake(imageForSize.size.width,imageForSize.size.height);
 
 	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 	
@@ -24,14 +27,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 	CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, true, NULL);
 	if(cgContext) { 
 			
-		NSData *imageData = [Dot dataFromDotFile: (NSURL *)url ];
-
-			
 		CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData ((CFDataRef)imageData);
 		CGImageRef image = CGImageCreateWithPNGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
 			
-			
-		CGContextDrawImage(cgContext,CGRectMake(0, 0, 400, 400), image);
+		CGContextDrawImage(cgContext,CGRectMake(0, 0, imageForSize.size.width, imageForSize.size.height), image);
 			
 		QLPreviewRequestFlushContext(preview, cgContext); CFRelease(cgContext);
 	} 
