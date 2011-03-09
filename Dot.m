@@ -35,6 +35,7 @@
 	
     [task launch];
 	
+	[task autorelease];
 	return [file readDataToEndOfFile];
 }
 
