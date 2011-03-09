@@ -16,6 +16,8 @@
 		CD3F0DD51327E3110088B552 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3F0DD41327E3110088B552 /* Foundation.framework */; };
 		CD3F0DEC1327E36F0088B552 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3F0DEB1327E36F0088B552 /* CoreData.framework */; };
 		CD55E28B1328203E0051B5D2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD55E28A1328203E0051B5D2 /* AppKit.framework */; };
+		CD55E2E8132828F20051B5D2 /* Dot.h in Headers */ = {isa = PBXBuildFile; fileRef = CD55E2E6132828F20051B5D2 /* Dot.h */; };
+		CD55E2E9132828F20051B5D2 /* Dot.m in Sources */ = {isa = PBXBuildFile; fileRef = CD55E2E7132828F20051B5D2 /* Dot.m */; };
 		F28CFBFD0A3EC0AF000ABFF5 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28CFBFC0A3EC0AF000ABFF5 /* ApplicationServices.framework */; };
 		F28CFC030A3EC0C6000ABFF5 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28CFC020A3EC0C6000ABFF5 /* QuickLook.framework */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,8 @@
 		CD3F0DD41327E3110088B552 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD3F0DEB1327E36F0088B552 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CD55E28A1328203E0051B5D2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CD55E2E6132828F20051B5D2 /* Dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dot.h; sourceTree = "<group>"; };
+		CD55E2E7132828F20051B5D2 /* Dot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dot.m; sourceTree = "<group>"; };
 		F28CFBFC0A3EC0AF000ABFF5 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		F28CFC020A3EC0C6000ABFF5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -94,6 +98,8 @@
 				61E3BCFA0870B4F2002186A0 /* GenerateThumbnailForURL.m */,
 				2C05A19B06CAA52B00D84F6F /* GeneratePreviewForURL.m */,
 				08FB77B6FE84183AC02AAC07 /* main.c */,
+				CD55E2E6132828F20051B5D2 /* Dot.h */,
+				CD55E2E7132828F20051B5D2 /* Dot.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -113,6 +119,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD55E2E8132828F20051B5D2 /* Dot.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +199,7 @@
 				8D576312048677EA00EA77CD /* main.c in Sources */,
 				2C05A19C06CAA52B00D84F6F /* GeneratePreviewForURL.m in Sources */,
 				61E3BCFB0870B4F2002186A0 /* GenerateThumbnailForURL.m in Sources */,
+				CD55E2E9132828F20051B5D2 /* Dot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
