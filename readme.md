@@ -1,14 +1,18 @@
 QuickLook dot
 =============
 
-Next steps
-
-- Create a branch for the current html-based approach
-- In the Head then switch to image-based previews and use the dot command
-
-
 Allow to quickly preview dot files from the finder
-   
+
+Installation
+------------
+
+- Copy the Quick look plugin to the folder ~/Library/QuickLook
+- The dot binary is a pre-requisite. Install it from <http://www.graphviz.org>
+- Make sure that the dot binary is available via `/usr/bin/dot`:
+
+	ln -s `which dot` /usr/bin/dot
+         
+
 Debugging
 ---------
 
