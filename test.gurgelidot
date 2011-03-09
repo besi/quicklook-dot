@@ -1,0 +1,44 @@
+digraph G{
+	node [fillcolor=white style=filled]
+	edge [fontsize=9]
+
+	rankdir=LR;
+	node [shape=box]
+	dev [label=Developer]
+	svn [label=Subversion style=filled shape=folder fillcolor=beige]
+	prevFTP [style=filled shape=folder fillcolor=beige]
+	prodFTP [style=filled shape=folder fillcolor=beige]
+	tracker [label=Redmine]
+
+	subgraph clusterHoster{
+		svn prodFTP prevFTP tracker
+		label=Hoster
+		style=filled
+		fillcolor=azure
+	}
+
+	subgraph clusterHudson{
+		Workspace
+		label=Hudson
+		style=filled
+		fillcolor=azure
+	}
+
+	subgraph clusterComputer{
+		dev devClient prevClient prodClient
+		label=Computer
+		style=filled
+		fillcolor=azure
+	}
+
+	dev -> svn [label="1: checkin"]
+	svn -> tracker [label="2: checkin\n closes tickets"]
+	svn -> Workspace [label="3: Timed checkout"]
+	Workspace -> Workspace [label="4: build"]
+	Workspace -> prevFTP [label="5: Upload"]
+	devClient -> Workspace [label="6: Update"]
+	prevClient -> prevFTP [label="7: Update"]
+	Workspace -> prodFTP [label="8: Manual Release Upload"]
+	Workspace -> svn [label="9: Auto-tag release"]
+	prodClient -> prodFTP [label="10: Update"]
+}
