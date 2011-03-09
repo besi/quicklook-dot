@@ -1,6 +1,12 @@
 QuickLook dot
 =============
 
+Next steps
+
+- Create a branch for the current html-based approach
+- In the Head then switch to image-based previews and use the dot command
+
+
 Allow to quickly preview dot files from the finder
    
 Debugging

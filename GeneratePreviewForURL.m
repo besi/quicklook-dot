@@ -22,13 +22,23 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 	props=[[[NSMutableDictionary alloc] init] autorelease];
 	[props setObject:@"UTF-8" forKey:(NSString *)kQLPreviewPropertyTextEncodingNameKey];
 	[props setObject:@"text/html" forKey:(NSString *)kQLPreviewPropertyMIMETypeKey];
-	html=[[[NSMutableString alloc] init] autorelease]; [html appendString:@"<html><body bgcolor=white>"]; [html appendString:@"<img src=\"cid:tabs.png\"><br>"];		[html appendString:@"</h1><br><br><h2>Description:</h2><br>"]; [html appendString:@"<br><h2>Start Date:</h2><br>"]; [html appendString:@"<br><h2>End Date:</h2><br>"];[html appendString:@"</body></html>"];
-//	image=[NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@",[[NSBundle bundleWithIdentifier:@"com.apple.eventsmanager.qlgenerator"] bundlePath], @"/Contents/Resources/tabs.png"]];
-//	imgProps=[[[NSMutableDictionary alloc] init] autorelease];
-//	[imgProps setObject:@"image/png" forKey:(NSString *)kQLPreviewPropertyMIMETypeKey];
-//	[imgProps setObject:image forKey:(NSString *)kQLPreviewPropertyAttachmentDataKey];
-//	[props setObject:[NSDictionary dictionaryWithObject:imgProps forKey:@"tabs.png"] forKey:(NSString *)kQLPreviewPropertyAttachmentsKey];
-	QLPreviewRequestSetDataRepresentation(preview,(CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],kUTTypeHTML,(CFDictionaryRef)props);
+	html=[[[NSMutableString alloc] init] autorelease]; 
+	[html appendString:@"<html><body bgcolor=white>"]; 
+	[html appendString:@"<img src=\"cid:setup.png\"><br>"];	
+	[html appendString:@"</h1><br><br><h2>Description:</h2><br>"];
+	[html appendString:@"<br><h2>Start Date:</h2><br>"]; 
+	[html appendString:@"<br><h2>End Date:</h2><br>"];
+	[html appendString:@"</body></html>"];
+	
+	image=[NSData dataWithContentsOfFile: @"/Users/besi/Dropbox/projects/gurgelisms-air/doc/setup.png"];
+	
+
+	
+	imgProps=[[[NSMutableDictionary alloc] init] autorelease];
+	[imgProps setObject:@"image/png" forKey:(NSString *)kQLPreviewPropertyMIMETypeKey];
+	[imgProps setObject:image forKey:(NSString *)kQLPreviewPropertyAttachmentDataKey];
+	[props setObject:[NSDictionary dictionaryWithObject:imgProps forKey:@"tabs.png"] forKey:(NSString *)kQLPreviewPropertyAttachmentsKey];
+	QLPreviewRequestSetDataRepresentation(preview,(CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],kUTTypeHTML,(CFDictionaryRef)props); 
 	
 	
 	[pool release]; return noErr;
