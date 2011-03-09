@@ -12,6 +12,7 @@
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>org.graphviz.dot</string>
+				<string>com.microsoft.word.dot</string>
 			</array>
 		</dict>
 	</array>
