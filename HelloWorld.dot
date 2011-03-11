@@ -1,0 +1,6 @@
+
+
+digraph g {
+   	a -> b -> c
+ 	b -> d
+}
