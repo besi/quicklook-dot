@@ -21,7 +21,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.qlgenerator.${PRODUCT_NAME:identifier}</string>
+	<string>ch.gurgeli.qlgenerator.${PRODUCT_NAME:identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -78,7 +78,7 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>dot</string>
-					<string>gurgelidot</string>
+					<string>gv</string>
 				</array>
 			</dict>
 		</dict>
