@@ -13,30 +13,16 @@
 
 +(NSData *)dataFromDotFile: (NSURL *) dotFile
 {
-    NSTask *task;
-    task = [[NSTask alloc] init];
-    [task setLaunchPath: @"/usr/bin/dot"];
-	
-    NSArray *arguments;	
-	NSString *dotPath = [dotFile path];
-	
-	NSLog(@"Path: %@",dotPath);
-	
-	
-    arguments = [NSArray arrayWithObjects:dotPath, @"-Tpng", nil];
-    [task setArguments: arguments];
-	
-    NSPipe *pipe;
-    pipe = [NSPipe pipe];
+    NSPipe *pipe = [NSPipe pipe];
+    NSTask *task = [[[NSTask alloc] init] autorelease];
+    
+    [task setLaunchPath: @"/usr/bin/env"];
+    [task setArguments: [NSArray arrayWithObjects: @"dot", [dotFile path], @"-Tpng", nil]];
     [task setStandardOutput: pipe];
-	
-    NSFileHandle *file;
-    file = [pipe fileHandleForReading];
-	
+    
     [task launch];
-	
-	[task autorelease];
-	return [file readDataToEndOfFile];
+    
+    return [[pipe fileHandleForReading] readDataToEndOfFile];
 }
 
 
