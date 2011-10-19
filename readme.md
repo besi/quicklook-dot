@@ -1,5 +1,5 @@
-quicklook-dot
-=============
+QuicklookDot
+============
 
 This bundle allows you to conveniently preview [dot][dot] files in a OSX [QuickLook][QuickLook] preview.
 
@@ -7,10 +7,6 @@ Installation
 ------------
 
 - The dot binary is a pre-requisite. Install it from <http://www.graphviz.org>
-- Make sure that the dot binary is available in the shell environment. You can create a symbolic link like so:
-
-		ln -s `which dot` /usr/bin/dot
-
 - Copy the QuickLook plugin bundle (.qlgenerator ending) to the folder ~/Library/QuickLook
 
 
@@ -23,6 +19,7 @@ Using the plugin
 
 		digraph G{
 			Hello -> World
+			this -> is -> a -> test
 		}
 
 
@@ -36,7 +33,7 @@ Debugging
 	defaults write -g QLEnableLogging YES
 	
 	# Create preview from the command line
-	qlmanage -p ~/Dropbox/projects/quicklook-dot/test.gurgelidot
+	qlmanage -p ~/Dropbox/projects/OSX/quicklook-dot/sample.dot
 
 
 Links
@@ -47,5 +44,4 @@ Links
 - quicklook-dot was inpired by [qlmarkdown](https://github.com/toland/qlmarkdown)
 
 [dot]: http://en.wikipedia.org/wiki/DOT_language     
-[QuickLook]: http://www.apple.com/macosx/what-is-macosx/quick-look.html    
-                                                                        
+[QuickLook]: http://www.apple.com/macosx/what-is-macosx/quick-look.html                                                                 
