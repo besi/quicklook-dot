@@ -3,6 +3,8 @@ QuicklookDot
 
 This bundle allows you to conveniently preview [dot][dot] files in a OSX [QuickLook][QuickLook] preview.
 
+![Screenshot](https://raw.github.com/besi/quicklook-dot/master/screenshot.png)
+
 Installation
 ------------
 
