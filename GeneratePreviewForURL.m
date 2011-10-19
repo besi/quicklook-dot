@@ -15,30 +15,30 @@
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
 	
-	NSData *imageData = [Dot dataFromDotFile: (NSURL *)url];
+	NSData *imageData = [Dot dataFromDotFile: (__bridge NSURL *)url];
 	NSImage *imageForSize = [[NSImage alloc] initWithData: imageData];
 	
 	CGSize canvasSize = CGSizeMake(imageForSize.size.width,imageForSize.size.height);
 
-	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-	
-	
-	// Preview will be drawn in a vectorized context
-	CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, true, NULL);
-	if(cgContext) { 
+    @autoreleasepool {
+        // Preview will be drawn in a vectorized context
+        CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, true, NULL);
+        if(cgContext) { 
 			
-		CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData ((CFDataRef)imageData);
-		CGImageRef image = CGImageCreateWithPNGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
+            CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData ((__bridge CFDataRef)imageData);
+            CGImageRef image = CGImageCreateWithPNGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
 			
-		CGContextDrawImage(cgContext,CGRectMake(0, 0, imageForSize.size.width, imageForSize.size.height), image);
+            CGContextDrawImage(cgContext,CGRectMake(0, 0, imageForSize.size.width, imageForSize.size.height), image);
 			
-		QLPreviewRequestFlushContext(preview, cgContext); CFRelease(cgContext);
-	} 
-	
-	[pool release]; 
+            QLPreviewRequestFlushContext(preview, cgContext);
+            
+            CFRelease(cgContext);
+            CFRelease(image);
+        } 
+ 
+    }
 	
 	return noErr;
-	
 }
 	
 

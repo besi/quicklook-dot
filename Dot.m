@@ -14,7 +14,7 @@
 +(NSData *)dataFromDotFile: (NSURL *) dotFile
 {
     NSPipe *pipe = [NSPipe pipe];
-    NSTask *task = [[[NSTask alloc] init] autorelease];
+    NSTask *task = [[NSTask alloc] init];
     
     [task setLaunchPath: @"/usr/bin/env"];
     [task setArguments: [NSArray arrayWithObjects: @"dot", [dotFile path], @"-Tpng", nil]];
@@ -24,6 +24,5 @@
     
     return [[pipe fileHandleForReading] readDataToEndOfFile];
 }
-
 
 @end
