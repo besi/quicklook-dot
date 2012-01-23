@@ -9,13 +9,17 @@ Installation
 ------------
 
 - The dot binary is a pre-requisite. Install it from <http://www.graphviz.org>
+- To be sure install a symbolic link in your Terminal
+
+		ln -s `which dot` /usr/bin/dot
+
 - Copy the QuickLook plugin bundle (.qlgenerator ending) to the folder ~/Library/QuickLook
 
 
 Using the plugin
 ----------------
 
-- You should be able to preview your dot files using the space key in Finder.
+- You should be able to preview your `.dot` or `.gv` files using the space key in Finder.
 - You also see a preview if your file is selected and if you are in column mode (⌘+ 3).
 - You can use a simple `HelloWorld.dot`
 
