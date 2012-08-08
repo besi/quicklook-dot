@@ -14,14 +14,14 @@ Installation
 		ln -s `which dot` /usr/bin/dot
 
 - Download the current version of the plugin from the "[Downloads]" section
-- Copy the QuickLook plugin bundle (.qlgenerator ending) to the folder ~/Library/QuickLook
+- Copy the QuickLook plugin bundle with the `.qlgenerator` ending to the folder `~/Library/QuickLook` (Create the folder, if it does not exist)
 
 
 Using the plugin
 ----------------
 
 - You should be able to preview your `.dot` or `.gv` files using the space key in Finder.
-- You also see a preview if your file is selected and if you are in column mode (⌘+ 3).
+- You also see a preview if your file is selected and if you are in column mode (`⌘+ 3).
 - You can use a simple `HelloWorld.dot`
 
 		digraph G{
