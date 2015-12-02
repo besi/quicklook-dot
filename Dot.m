@@ -16,8 +16,8 @@
     NSPipe *pipe = [NSPipe pipe];
     NSTask *task = [[NSTask alloc] init];
     
-    [task setLaunchPath: @"/usr/bin/env"];
-    [task setArguments: [NSArray arrayWithObjects: @"dot", [dotFile path], @"-Tpng", nil]];
+    [task setLaunchPath: @"/usr/local/bin/dot"];
+    [task setArguments: [NSArray arrayWithObjects: [dotFile path], @"-Tpng", nil]];
     [task setStandardOutput: pipe];
     
     [task launch];
