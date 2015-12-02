@@ -17,7 +17,7 @@
     NSTask *task = [[NSTask alloc] init];
     
     [task setLaunchPath: @"/usr/local/bin/dot"];
-    [task setArguments: [NSArray arrayWithObjects: [dotFile path], @"-Tpng", nil]];
+    [task setArguments: [NSArray arrayWithObjects: [dotFile path], @"-Tpdf", nil]];
     [task setStandardOutput: pipe];
     
     [task launch];

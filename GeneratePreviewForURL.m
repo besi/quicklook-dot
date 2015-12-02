@@ -22,20 +22,22 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 
     @autoreleasepool {
         // Preview will be drawn in a vectorized context
-        CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, true, NULL);
+        CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, false, NULL);
         if(cgContext) { 
-			
             CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData ((__bridge CFDataRef)imageData);
-            CGImageRef image = CGImageCreateWithPNGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
+            CGPDFDocumentRef document = CGPDFDocumentCreateWithProvider(imgDataProvider);
 			
-            CGContextDrawImage(cgContext,CGRectMake(0, 0, imageForSize.size.width, imageForSize.size.height), image);
+            if (CGPDFDocumentGetNumberOfPages(document) > 0) {
+                CGPDFPageRef page = CGPDFDocumentGetPage(document, 1);
+                CGContextDrawPDFPage(cgContext, page);
+            }
 			
             QLPreviewRequestFlushContext(preview, cgContext);
             
+            CGPDFDocumentRelease(document);
+            CGDataProviderRelease(imgDataProvider);
             CFRelease(cgContext);
-            CFRelease(image);
-        } 
- 
+        }
     }
 	
 	return noErr;
