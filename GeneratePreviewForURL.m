@@ -14,8 +14,14 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-    NSData *data = [Dot dataFromDotFile: (__bridge NSURL *)url];
-    QLPreviewRequestSetDataRepresentation(preview, (__bridge CFDataRef)data, kUTTypePDF, NULL);
+    NSData *data = [Dot dataFromDotFile:(__bridge NSURL *)url];
+
+    if ([data length] > 0) {
+        QLPreviewRequestSetDataRepresentation(preview, (__bridge CFDataRef)data, kUTTypePDF, NULL);
+    } else {
+        NSData *txtData = [NSData dataWithContentsOfURL:(__bridge NSURL *)url];
+        QLPreviewRequestSetDataRepresentation(preview, (__bridge CFDataRef)txtData, kUTTypeUTF8PlainText, NULL);
+    }
 
 	return noErr;
 }

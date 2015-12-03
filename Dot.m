@@ -16,7 +16,8 @@
     NSPipe *pipe = [NSPipe pipe];
     NSTask *task = [[NSTask alloc] init];
 
-    NSString *command = [NSString stringWithFormat:@"dot -Tpdf %@", [dotFile path]];
+    NSString *format = @"perl -e 'alarm 10; exec @ARGV' 'dot -Tpdf %@'";
+    NSString *command = [NSString stringWithFormat:format, [dotFile path]];
 
     [task setLaunchPath:@"/bin/bash"];
     [task setArguments:@[@"-l", @"-c", command]];
