@@ -51,9 +51,9 @@
 	<key>QLNeedsToBeRunInMainThread</key>
 	<false/>
 	<key>QLPreviewHeight</key>
-	<real>2000</real>
+	<integer>800</integer>
 	<key>QLPreviewWidth</key>
-	<real>2000</real>
+	<integer>800</integer>
 	<key>QLSupportsConcurrentRequests</key>
 	<false/>
 	<key>QLThumbnailMinimumSize</key>
