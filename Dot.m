@@ -11,13 +11,13 @@
 
 @implementation Dot
 
-+(NSData *)dataFromDotFile: (NSURL *) dotFile
++(NSData *)dataFromDotFile:(NSURL *)dotFile withTimeout:(int)timeout
 {
     NSPipe *pipe = [NSPipe pipe];
     NSTask *task = [[NSTask alloc] init];
 
-    NSString *format = @"perl -e 'alarm 10; exec @ARGV' 'dot -Tpdf %@'";
-    NSString *command = [NSString stringWithFormat:format, [dotFile path]];
+    NSString *format = @"perl -e 'alarm %d; exec @ARGV' 'dot -Tpdf %@'";
+    NSString *command = [NSString stringWithFormat:format, timeout, [dotFile path]];
 
     [task setLaunchPath:@"/bin/bash"];
     [task setArguments:@[@"-l", @"-c", command]];

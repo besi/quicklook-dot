@@ -14,7 +14,7 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-    NSData *data = [Dot dataFromDotFile:(__bridge NSURL *)url];
+    NSData *data = [Dot dataFromDotFile:(__bridge NSURL *)url withTimeout:10];
 
     if ([data length] > 0) {
         QLPreviewRequestSetDataRepresentation(preview, (__bridge CFDataRef)data, kUTTypePDF, NULL);
