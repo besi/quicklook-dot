@@ -15,13 +15,15 @@
 {
     NSPipe *pipe = [NSPipe pipe];
     NSTask *task = [[NSTask alloc] init];
-    
-    [task setLaunchPath: @"/usr/local/bin/dot"];
-    [task setArguments: [NSArray arrayWithObjects: [dotFile path], @"-Tpdf", nil]];
-    [task setStandardOutput: pipe];
-    
+
+    NSString *command = [NSString stringWithFormat:@"dot -Tpdf %@", [dotFile path]];
+
+    [task setLaunchPath:@"/bin/bash"];
+    [task setArguments:@[@"-l", @"-c", command]];
+    [task setStandardOutput:pipe];
+
     [task launch];
-    
+
     return [[pipe fileHandleForReading] readDataToEndOfFile];
 }
 
