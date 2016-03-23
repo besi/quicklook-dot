@@ -12,7 +12,6 @@
 @interface Dot : NSObject {
 }
 
-+(NSData *)dataFromDotFile: (NSURL *) dotFile;
-
++(NSData *)dataFromDotFile:(NSURL *)dotFile withTimeout:(int)timeout;
 
 @end

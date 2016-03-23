@@ -21,7 +21,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>ch.gurgeli.qlgenerator.${PRODUCT_NAME:identifier}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -51,9 +51,9 @@
 	<key>QLNeedsToBeRunInMainThread</key>
 	<false/>
 	<key>QLPreviewHeight</key>
-	<real>600</real>
+	<integer>800</integer>
 	<key>QLPreviewWidth</key>
-	<real>800</real>
+	<integer>800</integer>
 	<key>QLSupportsConcurrentRequests</key>
 	<false/>
 	<key>QLThumbnailMinimumSize</key>

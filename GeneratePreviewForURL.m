@@ -14,35 +14,16 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-	
-	NSData *imageData = [Dot dataFromDotFile: (__bridge NSURL *)url];
-	NSImage *imageForSize = [[NSImage alloc] initWithData: imageData];
-	
-	CGSize canvasSize = CGSizeMake(imageForSize.size.width,imageForSize.size.height);
+    NSData *data = [Dot dataFromDotFile:(__bridge NSURL *)url withTimeout:10];
 
-    @autoreleasepool {
-        // Preview will be drawn in a vectorized context
-        CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, true, NULL);
-        if(cgContext) { 
-			
-            CGDataProviderRef imgDataProvider = CGDataProviderCreateWithCFData ((__bridge CFDataRef)imageData);
-            CGImageRef image = CGImageCreateWithPNGDataProvider(imgDataProvider, NULL, true, kCGRenderingIntentDefault);
-			
-            CGContextDrawImage(cgContext,CGRectMake(0, 0, imageForSize.size.width, imageForSize.size.height), image);
-			
-            QLPreviewRequestFlushContext(preview, cgContext);
-            
-            CFRelease(cgContext);
-            CFRelease(image);
-        } 
- 
+    if ([data length] > 0) {
+        QLPreviewRequestSetDataRepresentation(preview, (__bridge CFDataRef)data, kUTTypePDF, NULL);
+    } else {
+        QLPreviewRequestSetURLRepresentation(preview, url, kUTTypeUTF8PlainText, NULL);
     }
-	
+
 	return noErr;
 }
-	
-
-
 
 void CancelPreviewGeneration(void* thisInterface, QLPreviewRequestRef preview)
 {
